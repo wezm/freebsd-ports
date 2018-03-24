@@ -1,0 +1,5 @@
+Ego is an ERb style templating language for Go. It works by transpiling
+templates into pure Go and including them at compile time. These templates are
+light wrappers around the Go language itself.
+
+WWW: https://github.com/benbjohnson/ego
