@@ -1,0 +1,4 @@
+Faktory is a repository for background jobs. Jobs can be executed with any
+language by clients using the Faktory API to fetch a job from a queue.
+
+WWW: http://contribsys.com/faktory/
