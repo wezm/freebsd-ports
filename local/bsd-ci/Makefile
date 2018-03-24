@@ -1,0 +1,238 @@
+# $FreeBSD$
+
+PORTNAME=       bsd-ci
+DISTVERSION=	0.1
+DISTVERSIONPREFIX=	v
+CATEGORIES=     local
+VALID_CATEGORIES+= local
+
+MAINTAINER=     wes@wezm.net
+COMMENT=        Continuous integration on BSD servers
+
+USES=           cargo pgsql
+
+USE_GITHUB=     yes
+GH_ACCOUNT=     wezm
+
+CARGO_CRATES=	actix-0.5.5 \
+		actix-web-0.4.10 \
+		actix_derive-0.2.0 \
+		aho-corasick-0.6.4 \
+		ansi_term-0.11.0 \
+		arrayref-0.3.4 \
+		arrayvec-0.4.7 \
+		atomic-option-0.1.2 \
+		atty-0.2.8 \
+		backtrace-0.2.3 \
+		backtrace-0.3.5 \
+		backtrace-sys-0.1.16 \
+		base64-0.6.0 \
+		base64-0.9.0 \
+		bitflags-0.9.1 \
+		bitflags-1.0.1 \
+		block-buffer-0.3.3 \
+		brotli-sys-0.3.2 \
+		brotli2-0.3.2 \
+		bufstream-0.1.3 \
+		byte-tools-0.2.0 \
+		bytecount-0.2.0 \
+		byteorder-1.2.1 \
+		bytes-0.4.6 \
+		cargo_metadata-0.3.3 \
+		cc-1.0.9 \
+		cfg-if-0.1.2 \
+		chrono-0.4.0 \
+		clap-2.31.2 \
+		cookie-0.10.1 \
+		crossbeam-channel-0.1.2 \
+		crossbeam-deque-0.2.0 \
+		crossbeam-deque-0.3.0 \
+		crossbeam-epoch-0.2.0 \
+		crossbeam-epoch-0.3.1 \
+		crossbeam-epoch-0.4.1 \
+		crossbeam-utils-0.2.2 \
+		crossbeam-utils-0.3.2 \
+		dbghelp-sys-0.2.0 \
+		derive-error-chain-0.11.0 \
+		diesel-1.1.1 \
+		diesel-derive-enum-0.4.3 \
+		diesel_derives-1.1.0 \
+		digest-0.7.2 \
+		dotenv-0.11.0 \
+		dtoa-0.4.2 \
+		encoding-0.2.33 \
+		encoding-index-japanese-1.20141219.5 \
+		encoding-index-korean-1.20141219.5 \
+		encoding-index-simpchinese-1.20141219.5 \
+		encoding-index-singlebyte-1.20141219.5 \
+		encoding-index-tradchinese-1.20141219.5 \
+		encoding_index_tests-0.1.4 \
+		env_logger-0.5.6 \
+		error-chain-0.1.12 \
+		error-chain-0.11.0 \
+		error-chain-0.8.1 \
+		failure-0.1.1 \
+		failure_derive-0.1.1 \
+		fake-simd-0.1.2 \
+		faktory-0.9.3 \
+		flate2-1.0.1 \
+		fnv-1.0.6 \
+		fuchsia-zircon-0.3.3 \
+		fuchsia-zircon-sys-0.3.3 \
+		futures-0.1.19 \
+		futures-cpupool-0.1.8 \
+		gcc-0.3.54 \
+		generic-array-0.9.0 \
+		glob-0.2.11 \
+		h2-0.1.2 \
+		heck-0.3.0 \
+		hex-0.3.1 \
+		hostname-0.1.4 \
+		http-0.1.5 \
+		http-range-0.1.1 \
+		httparse-1.2.4 \
+		humantime-1.1.1 \
+		idna-0.1.4 \
+		indexmap-1.0.0 \
+		iovec-0.1.2 \
+		ipconfig-0.1.6 \
+		itoa-0.4.1 \
+		json-0.11.13 \
+		kernel32-sys-0.2.2 \
+		language-tags-0.2.2 \
+		lazy_static-0.2.11 \
+		lazy_static-1.0.0 \
+		lazycell-0.6.0 \
+		libc-0.2.39 \
+		linked-hash-map-0.4.2 \
+		log-0.3.9 \
+		log-0.4.1 \
+		lru-cache-0.1.1 \
+		matches-0.1.6 \
+		memchr-2.0.1 \
+		memoffset-0.1.0 \
+		memoffset-0.2.1 \
+		mime-0.3.5 \
+		mime_guess-2.0.0-alpha.4 \
+		miniz-sys-0.1.10 \
+		mio-0.6.14 \
+		mio-uds-0.6.4 \
+		miow-0.2.1 \
+		net2-0.2.32 \
+		nodrop-0.1.12 \
+		num-0.1.42 \
+		num-integer-0.1.36 \
+		num-iter-0.1.35 \
+		num-traits-0.2.2 \
+		num_cpus-1.8.0 \
+		owning_ref-0.3.3 \
+		parking_lot-0.4.8 \
+		parking_lot_core-0.2.13 \
+		percent-encoding-1.0.1 \
+		phf-0.7.21 \
+		phf_codegen-0.7.21 \
+		phf_generator-0.7.21 \
+		phf_shared-0.7.21 \
+		pq-sys-0.4.4 \
+		proc-macro2-0.2.3 \
+		pulldown-cmark-0.1.2 \
+		quick-error-1.2.1 \
+		quote-0.3.15 \
+		quote-0.4.2 \
+		rand-0.3.22 \
+		rand-0.4.2 \
+		rayon-0.8.2 \
+		rayon-core-1.4.0 \
+		redox_syscall-0.1.37 \
+		redox_termios-0.1.1 \
+		regex-0.2.10 \
+		regex-syntax-0.5.3 \
+		remove_dir_all-0.5.0 \
+		resolv-conf-0.6.0 \
+		ring-0.12.1 \
+		rust-crypto-0.2.36 \
+		rustc-demangle-0.1.7 \
+		rustc-serialize-0.3.24 \
+		safemem-0.2.0 \
+		same-file-0.1.3 \
+		scoped-tls-0.1.1 \
+		scopeguard-0.3.3 \
+		semver-0.8.0 \
+		semver-parser-0.7.0 \
+		serde-1.0.34 \
+		serde_derive-1.0.34 \
+		serde_derive_internals-0.22.0 \
+		serde_json-1.0.13 \
+		sha1-0.6.0 \
+		sha2-0.7.0 \
+		siphasher-0.2.2 \
+		skeptic-0.13.2 \
+		slab-0.4.0 \
+		smallvec-0.6.0 \
+		socket2-0.3.4 \
+		stable_deref_trait-1.0.0 \
+		string-0.1.0 \
+		strsim-0.7.0 \
+		structopt-0.2.5 \
+		structopt-derive-0.2.5 \
+		syn-0.11.11 \
+		syn-0.12.14 \
+		synom-0.11.3 \
+		synstructure-0.6.1 \
+		tempdir-0.3.7 \
+		termcolor-0.3.5 \
+		termion-1.5.1 \
+		textwrap-0.9.0 \
+		thread_local-0.3.5 \
+		time-0.1.39 \
+		tokio-0.1.4 \
+		tokio-core-0.1.16 \
+		tokio-executor-0.1.1 \
+		tokio-io-0.1.6 \
+		tokio-reactor-0.1.1 \
+		tokio-signal-0.1.5 \
+		tokio-tcp-0.1.0 \
+		tokio-threadpool-0.1.1 \
+		tokio-udp-0.1.0 \
+		trust-dns-proto-0.3.2 \
+		trust-dns-resolver-0.8.1 \
+		typenum-1.10.0 \
+		ucd-util-0.1.1 \
+		unicase-1.4.2 \
+		unicase-2.1.0 \
+		unicode-bidi-0.3.4 \
+		unicode-normalization-0.1.5 \
+		unicode-segmentation-1.2.0 \
+		unicode-width-0.1.4 \
+		unicode-xid-0.0.4 \
+		unicode-xid-0.1.0 \
+		unreachable-1.0.0 \
+		untrusted-0.5.1 \
+		url-1.7.0 \
+		utf8-ranges-1.0.0 \
+		uuid-0.6.2 \
+		vcpkg-0.2.2 \
+		vec_map-0.8.0 \
+		version_check-0.1.3 \
+		void-1.0.2 \
+		walkdir-1.0.7 \
+		widestring-0.2.2 \
+		winapi-0.2.8 \
+		winapi-0.3.4 \
+		winapi-build-0.1.1 \
+		winapi-i686-pc-windows-gnu-0.4.0 \
+		winapi-x86_64-pc-windows-gnu-0.4.0 \
+		wincolor-0.1.6 \
+		winreg-0.5.0 \
+		winutil-0.1.1 \
+		ws2_32-sys-0.2.1
+
+PLIST_FILES=	bin/bsd-ci-server bin/bsd-ci-worker
+
+do-install:
+	${INSTALL_PROGRAM} ${CARGO_TARGET_DIR}/release/bsd-ci-server \
+	${STAGEDIR}${PREFIX}/bin/bsd-ci-server
+	${INSTALL_PROGRAM} ${CARGO_TARGET_DIR}/release/bsdci-worker \
+	${STAGEDIR}${PREFIX}/bin/bsd-ci-worker
+
+.include <bsd.port.mk>
